@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 770374781}
   - component: {fileID: 770374780}
   - component: {fileID: 770374785}
+  - component: {fileID: 770374786}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -539,6 +540,23 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 0}
   moveSpeed: 6
   movement: {x: 0, y: 0}
+  _movementDirection: {x: 0, y: 0}
+--- !u!114 &770374786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770374779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5717d769217f3f4ea9d9441f1597b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shoot: 0
+  _bulletPrefab: {fileID: 8704146942213854930, guid: c8cfde56830e3554faa7a3827fb0d24d, type: 3}
+  _playerPosition: {x: 0, y: 0, z: 0}
+  _player: {fileID: 0}
 --- !u!1 &904437945
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +929,8 @@ MonoBehaviour:
   _speed: 2.5
   _differenceX: 0
   _differenceY: 0
-  stoppingDistance: 2.5
+  _stoppingDistance: 2.5
+  _movementDirection: {x: 0, y: 0}
 --- !u!95 &904437951
 Animator:
   serializedVersion: 3

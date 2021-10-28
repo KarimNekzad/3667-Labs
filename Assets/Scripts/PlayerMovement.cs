@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 6.0f;
 
     [SerializeField] private Vector2 movement;
+    [SerializeField] private Vector2 _movementDirection;
 
     private void Awake()
     {
@@ -46,18 +47,39 @@ public class PlayerMovement : MonoBehaviour
         if (movement.x == 1)
         {
             transform.rotation = Quaternion.Euler(0, 0, 270f);
+            _movementDirection.x = 1;
+            _movementDirection.y = 0;
         }
         else if (movement.x == -1)
         {
             transform.rotation = Quaternion.Euler(0, 0, 90f);
+            _movementDirection.x = -1;
+            _movementDirection.y = 0;
         }
         else if (movement.y == 1)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0f);
+            _movementDirection.x = 0;
+            _movementDirection.y = 1;
         }
         else if (movement.y == -1)
         {
             transform.rotation = Quaternion.Euler(0, 0, 180f);
+            _movementDirection.x = 0;
+            _movementDirection.y = -1;
+        }
+    }
+
+    public Vector2 GetMovementDirection()
+    {
+        if (_movementDirection.x != 0 || _movementDirection.y != 0)
+        {
+            return _movementDirection;
+        }
+        else
+        {
+            Vector2 defaultMovementDirection = new Vector2(0, 1);
+            return defaultMovementDirection;
         }
     }
 }
