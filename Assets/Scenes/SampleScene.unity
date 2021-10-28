@@ -303,6 +303,8 @@ GameObject:
   - component: {fileID: 770374780}
   - component: {fileID: 770374785}
   - component: {fileID: 770374786}
+  - component: {fileID: 770374787}
+  - component: {fileID: 770374788}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -538,7 +540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 0}
-  moveSpeed: 6
+  moveSpeed: 7
   movement: {x: 0, y: 0}
   _movementDirection: {x: 0, y: 0}
 --- !u!114 &770374786
@@ -556,6 +558,32 @@ MonoBehaviour:
   _shoot: 0
   _bulletPrefab: {fileID: 8704146942213854930, guid: c8cfde56830e3554faa7a3827fb0d24d, type: 3}
   _player: {fileID: 0}
+--- !u!114 &770374787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770374779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa1667933345994cadcb6088b43ae34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &770374788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770374779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f926066795b90f4193a08b26da2cd75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 5
+  _defaultDamage: 1
 --- !u!1 &904437945
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +599,8 @@ GameObject:
   - component: {fileID: 904437950}
   - component: {fileID: 904437951}
   - component: {fileID: 904437952}
+  - component: {fileID: 904437953}
+  - component: {fileID: 904437954}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -964,5 +994,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 8704146942213854930, guid: c8cfde56830e3554faa7a3827fb0d24d, type: 3}
   _startDelaySeconds: 1
-  _shootIntervalSeconds: 0.7
   _enemy: {fileID: 0}
+--- !u!114 &904437953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904437945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269510fc9afa873499b41eac86f21efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &904437954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904437945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4d25f125ac8c3428e952924c4c3c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 5
+  _defaultDamage: 1

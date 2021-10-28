@@ -32,6 +32,7 @@ public class PlayerShoot : MonoBehaviour
             GameObject bulletInstance = Instantiate(_bulletPrefab);
             bulletInstance.transform.position = MoveBulletInFrontOfPlayer(playerMovementDirection, playerPosition);
             bulletInstance.GetComponent<BulletMovement>().SetMovementDirection(playerMovementDirection);
+            bulletInstance.tag = "PlayerBullet";
         }
     }
 

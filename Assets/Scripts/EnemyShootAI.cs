@@ -6,8 +6,9 @@ public class EnemyShootAI : MonoBehaviour
 {
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private float _startDelaySeconds = 1.0f;
-    [SerializeField] private float _shootIntervalSeconds = 0.7f;
     [SerializeField] private GameObject _enemy;
+
+    private float _shootIntervalSeconds = 1.5f;
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class EnemyShootAI : MonoBehaviour
         GameObject bulletInstance = Instantiate(_bulletPrefab);
         bulletInstance.transform.position = MoveBulletInFrontOfEnemy(enemyMovementDirection, enemyPosition);
         bulletInstance.GetComponent<BulletMovement>().SetMovementDirection(enemyMovementDirection);
+        bulletInstance.tag = "EnemyBullet";
     }
 
     private Vector3 MoveBulletInFrontOfEnemy(Vector2 enemyMovementDirection, Vector3 enemyPosition)

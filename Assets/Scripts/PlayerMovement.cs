@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     // Method 1 - moving using velocity
     //[SerializeField] private float speed = 300.0f;
     // Method 2 - moving using MovePosition
-    [SerializeField] private float moveSpeed = 6.0f;
+    [SerializeField] private float moveSpeed = 7.0f;
 
     [SerializeField] private Vector2 movement;
     [SerializeField] private Vector2 _movementDirection;
