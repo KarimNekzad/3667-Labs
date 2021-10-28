@@ -6,7 +6,6 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] private bool _shoot = false;
     [SerializeField] private GameObject _bulletPrefab;
-    [SerializeField] private Vector3 _playerPosition;
     [SerializeField] private GameObject _player;
 
     private void Awake()
@@ -26,22 +25,20 @@ public class PlayerShoot : MonoBehaviour
         _shoot = Input.GetButtonDown("Fire1");
         if (_shoot)
         {
-            Debug.Log("Shooting!");
-
-            _playerPosition = _player.transform.position;
-            _playerPosition.z += 1f;
+            Vector3 playerPosition = _player.transform.position;
+            playerPosition.z += 1f;
             Vector2 playerMovementDirection = _player.GetComponent<PlayerMovement>().GetMovementDirection();
 
             GameObject bulletInstance = Instantiate(_bulletPrefab);
-            bulletInstance.transform.position = MoveBulletInFrontOfPlayer(playerMovementDirection);
+            bulletInstance.transform.position = MoveBulletInFrontOfPlayer(playerMovementDirection, playerPosition);
             bulletInstance.GetComponent<BulletMovement>().SetMovementDirection(playerMovementDirection);
         }
     }
 
-    private Vector3 MoveBulletInFrontOfPlayer(Vector2 playerMovementDirection)
+    private Vector3 MoveBulletInFrontOfPlayer(Vector2 playerMovementDirection, Vector3 playerPosition)
     {
-        Vector3 bulletPosition = _playerPosition;
-        float halfPlayerSpriteWidth = 1.5f;
+        Vector3 bulletPosition = playerPosition;
+        const float halfPlayerSpriteWidth = 1.5f;
 
         if (playerMovementDirection.x == 1)
         {
