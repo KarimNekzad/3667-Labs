@@ -584,6 +584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 5
   _defaultDamage: 1
+  _heartPrefab: {fileID: 865882656759148244, guid: b8fc17fcb6b6df14f9ce574e964c55f0, type: 3}
 --- !u!1 &904437945
 GameObject:
   m_ObjectHideFlags: 0
