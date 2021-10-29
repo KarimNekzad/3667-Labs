@@ -7,6 +7,7 @@ public class EnemyShootAI : MonoBehaviour
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private float _startDelaySeconds = 1.0f;
     [SerializeField] private GameObject _enemy;
+    [SerializeField] private AudioClip _enemyShoot;
 
     private float _shootIntervalSeconds = 1.5f;
 
@@ -37,6 +38,8 @@ public class EnemyShootAI : MonoBehaviour
         bulletInstance.transform.position = MoveBulletInFrontOfEnemy(enemyMovementDirection, enemyPosition);
         bulletInstance.GetComponent<BulletMovement>().SetMovementDirection(enemyMovementDirection);
         bulletInstance.tag = "EnemyBullet";
+
+        AudioSource.PlayClipAtPoint(_enemyShoot, transform.position);
     }
 
     private Vector3 MoveBulletInFrontOfEnemy(Vector2 enemyMovementDirection, Vector3 enemyPosition)

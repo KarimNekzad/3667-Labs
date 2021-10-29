@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerBulletCollision : MonoBehaviour
 {
+    [SerializeField] private AudioClip _playerTakeDamage;
+
     private PlayerHealthTracker _healthTracker;
 
     private void Awake()
@@ -29,6 +31,7 @@ public class PlayerBulletCollision : MonoBehaviour
         {
             Destroy(collision.gameObject);
             _healthTracker.TakeDamage();
+            AudioSource.PlayClipAtPoint(_playerTakeDamage, transform.position);
         }
     }
 }
