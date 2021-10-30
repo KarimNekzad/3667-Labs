@@ -49,7 +49,7 @@ public class PlayerHealthTracker : MonoBehaviour
 
         if (_health <= 0)
         {
-            //RestartLevel();
+            RestartLevel();
         }
     }
 

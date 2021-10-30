@@ -43,7 +43,6 @@ public class HighScoresManager : MonoBehaviour
             if (PlayerPrefs.HasKey(highScoreNameKey) || PlayerPrefs.HasKey(highScoreValueKey))
             {
                 int highScore = PlayerPrefs.GetInt(highScoreValueKey);
-                Debug.Log("comparing current score of: " + playerScore + " with high score of: " + highScore);
                 if (playerScore > highScore)
                 {
                     string tempName = PlayerPrefs.GetString(highScoreNameKey);

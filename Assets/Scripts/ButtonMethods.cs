@@ -18,6 +18,7 @@ public class ButtonMethods : MonoBehaviour
     public void Menu()
     {
         SceneManager.LoadScene(_menuIndex);
+        PlayerPrefs.SetInt("Score", 0);
     }
 
     public void Settings()

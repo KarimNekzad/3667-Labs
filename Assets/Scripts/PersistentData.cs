@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PersistentData : MonoBehaviour
 {
-    [SerializeField] private string _playerName = "";
-    [SerializeField] private int _score = 0;
-
     public static PersistentData instance;
 
     private void Awake()
@@ -22,29 +19,28 @@ public class PersistentData : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Update()
     {
-        _playerName = PlayerPrefs.GetString("Name");
+        PlayerPrefs.GetString("Name");
     }
 
     public string GetName()
     {
-        return _playerName;
+        return PlayerPrefs.GetString("Name");
     }
 
     public void SetName(string name)
     {
-        _playerName = name;
+        PlayerPrefs.SetString("Name", name);
     }
 
     public int GetScore()
     {
-        return _score;
+        return PlayerPrefs.GetInt("Score"); ;
     }
 
     public void SetScore(int score)
     {
-        _score = score;
         PlayerPrefs.SetInt("Score", score);
     }
 }

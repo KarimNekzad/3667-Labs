@@ -48,8 +48,20 @@ public class EnemyHealthTracker : MonoBehaviour
 
         if (_health <= 0)
         {
+            int level = SceneManager.GetActiveScene().buildIndex - 1;
+
+            PlayerPrefs.SetInt("Level", level);
             AdvanceLevel();
-            PersistentData.instance.SetScore(PersistentData.instance.GetScore() + 10);
+            PersistentData.instance.SetScore(PersistentData.instance.GetScore() + 9 * (level - 1));
+
+            if (PlayerPrefs.GetString("Difficulty") == "Medium")
+            {
+                PersistentData.instance.SetScore(PersistentData.instance.GetScore() + 13);
+            }
+            else if (PlayerPrefs.GetString("Difficulty") == "Hard")
+            {
+                PersistentData.instance.SetScore(PersistentData.instance.GetScore() + 29);
+            }
         }
     }
 
