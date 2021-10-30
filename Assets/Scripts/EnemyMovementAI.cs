@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyMovementAI : MonoBehaviour
 {
-    [SerializeField] private float _speed = 2.5f;
     [SerializeField] private float _differenceX = 0;
     [SerializeField] private float _differenceY = 0;
     [SerializeField] private float _stoppingDistance = 2.5f;
     [SerializeField] private Vector2 _movementDirection;
+    [SerializeField] private float _speed = 2.5f;
 
     private Transform _target;
     private Rigidbody2D _rigidbody2D;
@@ -16,7 +16,7 @@ public class EnemyMovementAI : MonoBehaviour
     private bool _isMovingLeft = false;
     private bool _isMovingUp = false;
     private bool _isMovingDown = false;
-
+    
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -26,7 +26,17 @@ public class EnemyMovementAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetMovementSpeedDifficulty(PlayerPrefs.GetString("Difficulty"));
 
+        int currentLevel = PlayerPrefs.GetInt("Level");
+        if (currentLevel == 2)
+        {
+            _speed *= 1.5f;
+        }
+        else if (currentLevel == 3)
+        {
+            _speed *= 2.0f;
+        }
     }
 
     // Update is called once per frame
@@ -126,5 +136,21 @@ public class EnemyMovementAI : MonoBehaviour
     public Vector2 GetMovementDirection()
     {
         return _movementDirection;
+    }
+
+    private void SetMovementSpeedDifficulty(string difficulty)
+    {
+        switch (difficulty)
+        {
+            case "Easy":
+                _speed = 2.0f;
+                break;
+            case "Medium":
+                _speed = 2.5f;
+                break;
+            case "Hard":
+                _speed = 3.0f;
+                break;
+        }
     }
 }

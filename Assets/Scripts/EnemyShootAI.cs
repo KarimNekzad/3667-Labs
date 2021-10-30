@@ -8,8 +8,7 @@ public class EnemyShootAI : MonoBehaviour
     [SerializeField] private float _startDelaySeconds = 1.0f;
     [SerializeField] private GameObject _enemy;
     [SerializeField] private AudioClip _enemyShoot;
-
-    private float _shootIntervalSeconds = 1.5f;
+    [SerializeField] private float _shootIntervalSeconds = 1.5f;
 
     private void Awake()
     {
@@ -19,6 +18,7 @@ public class EnemyShootAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetShootSpeedDifficulty(PlayerPrefs.GetString("Difficulty"));
         InvokeRepeating("Shoot", _startDelaySeconds, _shootIntervalSeconds);
     }
 
@@ -65,5 +65,21 @@ public class EnemyShootAI : MonoBehaviour
         }
 
         return bulletPosition;
+    }
+
+    private void SetShootSpeedDifficulty(string difficulty)
+    {
+        switch(difficulty)
+        {
+            case "Easy":
+                _shootIntervalSeconds = 2.0f;
+                break;
+            case "Medium":
+                _shootIntervalSeconds = 1.5f;
+                break;
+            case "Hard":
+                _shootIntervalSeconds = 0.6f;
+                break;
+        }
     }
 }
