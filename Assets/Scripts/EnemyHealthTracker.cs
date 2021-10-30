@@ -49,6 +49,7 @@ public class EnemyHealthTracker : MonoBehaviour
         if (_health <= 0)
         {
             AdvanceLevel();
+            PersistentData.instance.SetScore(PersistentData.instance.GetScore() + 10);
         }
     }
 

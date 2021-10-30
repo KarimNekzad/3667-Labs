@@ -7,10 +7,11 @@ public class ButtonMethods : MonoBehaviour
 {
     private const int _menuIndex = 0;
     private const int _settingsIndex = 1;
+    private const int _highScoresIndex = 2;
 
     public void Play()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
         PlayerPrefs.SetInt("Level", 1);
     }
 
@@ -24,6 +25,10 @@ public class ButtonMethods : MonoBehaviour
         SceneManager.LoadScene(_settingsIndex);
     }
 
+    public void HighScores()
+    {
+        SceneManager.LoadScene(_highScoresIndex);
+    }
     public void SetDifficultyEasy()
     {
         PlayerPrefs.SetString("Difficulty", "Easy");
