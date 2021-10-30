@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - EnemyBullet
   - PlayerBullet
+  - ShowWhenPaused
+  - ShowWhenResumed
   layers:
   - Default
   - TransparentFX
