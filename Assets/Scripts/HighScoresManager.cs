@@ -23,18 +23,14 @@ public class HighScoresManager : MonoBehaviour
 
     private void UpdateHighScores(string currentPlayerName, int currentPlayerScore)
     {
-        string playerName = currentPlayerName;
-        int playerScore = currentPlayerScore;
-
-        for (int i = 0; i < _numHighScores; i++)
+        if (currentPlayerScore == 0)
         {
-            string highScorePlayerName = PlayerPrefs.GetString(_highScoreNameKey + i);
-            if (playerName == highScorePlayerName)
-            {
-                return;
-            }
+            return;
         }
 
+        string playerName = currentPlayerName;
+        int playerScore = currentPlayerScore;
+        
         for (int i = 0; i < _numHighScores; i++)
         {
             string highScoreNameKey = _highScoreNameKey + i;
@@ -50,6 +46,7 @@ public class HighScoresManager : MonoBehaviour
 
                     PlayerPrefs.SetString(highScoreNameKey, playerName);
                     PlayerPrefs.SetInt(highScoreValueKey, playerScore);
+                    PlayerPrefs.SetInt("Score", 0);
 
                     Debug.Log("set the high score at " + (i + 1) + " to: " + playerScore);
 
