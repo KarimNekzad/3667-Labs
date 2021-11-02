@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PersistentData : MonoBehaviour
 {
@@ -42,5 +43,10 @@ public class PersistentData : MonoBehaviour
     public void SetScore(int score)
     {
         PlayerPrefs.SetInt("Score", score);
+    }
+
+    public int GetLevel()
+    {
+        return SceneManager.GetActiveScene().buildIndex - 2;
     }
 }

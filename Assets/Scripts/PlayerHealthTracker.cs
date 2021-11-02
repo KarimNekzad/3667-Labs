@@ -57,4 +57,9 @@ public class PlayerHealthTracker : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public int GetHealth()
+    {
+        return _health;
+    }
 }

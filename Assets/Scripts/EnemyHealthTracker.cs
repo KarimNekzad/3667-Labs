@@ -15,10 +15,12 @@ public class EnemyHealthTracker : MonoBehaviour
     private const float _heartDefaultY = 4.3f;
     private const float _heartXPositionOffset = 0.5f;
     private GameObject[] _hearts = new GameObject[5];
+    private GameObject _player;
 
     // Start is called before the first frame update
     void Start()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
         _healthText.text = "Enemy HP: " + _health;
 
         for (int i = 0; i < _health; i++)
@@ -52,16 +54,19 @@ public class EnemyHealthTracker : MonoBehaviour
 
             PlayerPrefs.SetInt("Level", level);
             AdvanceLevel();
-            PersistentData.instance.SetScore(PersistentData.instance.GetScore() + 9 * (level - 1));
+            PersistentData.instance.SetScore(PersistentData.instance.GetScore() + 7 * (level - 1));
 
             if (PlayerPrefs.GetString("Difficulty") == "Medium")
             {
-                PersistentData.instance.SetScore(PersistentData.instance.GetScore() + 13);
+                PersistentData.instance.SetScore(PersistentData.instance.GetScore() + 7);
             }
             else if (PlayerPrefs.GetString("Difficulty") == "Hard")
             {
-                PersistentData.instance.SetScore(PersistentData.instance.GetScore() + 29);
+                PersistentData.instance.SetScore(PersistentData.instance.GetScore() + 14);
             }
+
+            int playerHP = _player.GetComponent<PlayerHealthTracker>().GetHealth();
+            PersistentData.instance.SetScore(PersistentData.instance.GetScore() + (playerHP * 7));
         }
     }
 
