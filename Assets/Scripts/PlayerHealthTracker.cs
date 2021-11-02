@@ -15,7 +15,6 @@ public class PlayerHealthTracker : MonoBehaviour
     private const float _heartDefaultY = 4.3f;
     private const float _heartXPositionOffset = 0.5f;
     private GameObject[] _hearts = new GameObject[5];
-
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +31,7 @@ public class PlayerHealthTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     public void TakeDamage()

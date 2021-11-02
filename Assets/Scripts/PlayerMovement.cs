@@ -17,11 +17,14 @@ public class PlayerMovement : MonoBehaviour
     private Animator _animator;
     private const int _idle = 0;
     private const int _moving = 1;
+    private const int _takeDamage = 2;
+    private PlayerBulletCollision _playerBulletCollision;
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _playerBulletCollision = GetComponent<PlayerBulletCollision>();
     }
 
     private void Start()
@@ -36,13 +39,20 @@ public class PlayerMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         movement.Normalize();
 
-        if (movement.x > 0.1 || movement.x < -0.1 || movement.y > 0.1 || movement.y < -0.1)
+        if (!_playerBulletCollision.IsTakingDamage())
         {
-            _animator.SetInteger("movementState", _moving);
+            if (movement.x > 0.1 || movement.x < -0.1 || movement.y > 0.1 || movement.y < -0.1)
+            {
+                _animator.SetInteger("movementState", _moving);
+            }
+            else
+            {
+                _animator.SetInteger("movementState", _idle);
+            }
         }
         else
         {
-            _animator.SetInteger("movementState", _idle);
+            _animator.SetInteger("movementState", _takeDamage);
         }
     }
 

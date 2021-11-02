@@ -54,19 +54,21 @@ public class EnemyHealthTracker : MonoBehaviour
 
             PlayerPrefs.SetInt("Level", level);
             AdvanceLevel();
-            PersistentData.instance.SetScore(PersistentData.instance.GetScore() + 7 * (level - 1));
+
+            const int basePoints = 3;
+            PersistentData.instance.SetScore(PersistentData.instance.GetScore() + basePoints * (level - 1));
 
             if (PlayerPrefs.GetString("Difficulty") == "Medium")
             {
-                PersistentData.instance.SetScore(PersistentData.instance.GetScore() + 7);
+                PersistentData.instance.SetScore(PersistentData.instance.GetScore() + basePoints);
             }
             else if (PlayerPrefs.GetString("Difficulty") == "Hard")
             {
-                PersistentData.instance.SetScore(PersistentData.instance.GetScore() + 14);
+                PersistentData.instance.SetScore(PersistentData.instance.GetScore() + basePoints * 2);
             }
 
             int playerHP = _player.GetComponent<PlayerHealthTracker>().GetHealth();
-            PersistentData.instance.SetScore(PersistentData.instance.GetScore() + (playerHP * 7));
+            PersistentData.instance.SetScore(PersistentData.instance.GetScore() + playerHP);
         }
     }
 

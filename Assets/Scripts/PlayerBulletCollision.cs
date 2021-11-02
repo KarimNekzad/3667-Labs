@@ -8,6 +8,10 @@ public class PlayerBulletCollision : MonoBehaviour
 
     private PlayerHealthTracker _healthTracker;
 
+    private bool _takingDamage = false;
+    private const float _animationCooldown = 0.6f;
+    private float _resetAnimationState = 0f;
+
     private void Awake()
     {
         _healthTracker = GetComponent<PlayerHealthTracker>();
@@ -22,7 +26,13 @@ public class PlayerBulletCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (_takingDamage)
+        {
+            if (Time.time > _resetAnimationState)
+            {
+                _takingDamage = false;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,6 +42,13 @@ public class PlayerBulletCollision : MonoBehaviour
             Destroy(collision.gameObject);
             _healthTracker.TakeDamage();
             AudioSource.PlayClipAtPoint(_playerTakeDamage, transform.position);
+            _takingDamage = true;
+            _resetAnimationState = Time.time + _animationCooldown;
         }
+    }
+
+    public bool IsTakingDamage()
+    {
+        return _takingDamage;
     }
 }
