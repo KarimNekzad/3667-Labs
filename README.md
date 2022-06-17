@@ -1,4 +1,4 @@
-# Unity arcade spaceship game
+# C# AI tracking game
 
 Play game: https://karimnekzad.itch.io/karim-nekzad-cisc-3667-lab-game
 
